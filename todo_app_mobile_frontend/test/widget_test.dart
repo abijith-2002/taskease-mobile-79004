@@ -3,16 +3,19 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:todo_app_mobile_frontend/main.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Shows main screens and empty state', (WidgetTester tester) async {
+    await tester.pumpWidget(const TodoApp());
 
-    expect(find.text('todo_app_mobile_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+    // Look for the Tasks AppBar title and add FAB.
+    expect(find.text('Tasks'), findsOneWidget);
+    expect(find.byIcon(Icons.add), findsOneWidget);
 
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    // Should display the empty state (since no tasks)
+    expect(find.text('Nothing to do. Tap + to add a task!'), findsOneWidget);
 
-    expect(find.text('todo_app_mobile_frontend'), findsOneWidget);
+    // Switch tab and show empty completed state
+    await tester.tap(find.byIcon(Icons.check_circle_outline));
+    await tester.pumpAndSettle();
+    expect(find.text('No completed tasks.'), findsOneWidget);
   });
 }

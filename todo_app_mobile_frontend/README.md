@@ -1,16 +1,29 @@
 # todo_app_mobile_frontend
 
-A new Flutter project.
+A minimalist, modern Flutter todo app with a dark theme and offline persistence.
+
+## Features
+
+- Add, edit, complete, delete tasks
+- View active or completed tasks
+- Persistent local storage powered by SQLite (sqflite)
+- Minimal, modern dark UI (primary: #1976d2, secondary: #424242, accent: #ffca28)
+- Cards UI and floating action button
+- Extensible via `.env` for future configuration
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Run:
+```bash
+flutter pub get
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Environment Variables
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Environment configuration is loaded from `.env` via [flutter_dotenv](https://pub.dev/packages/flutter_dotenv).
+You may add future config entries in `.env`.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+
+MIT
